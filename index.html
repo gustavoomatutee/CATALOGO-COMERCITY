@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comercity - Catálogo Digital</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -31,16 +29,19 @@
 
     <header class="main-header">
         <div class="header-container">
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-            <a href="index.html" class="logo-container">
-                <img src="imagenes/logo111.png" alt="Comercity Logo" class="logo-img">
-                <h1 class="brand-name">COMERCITY</h1>
-            </a>
+                <a href="index.html" class="logo-container">
+                    <img src="imagenes/logo111.png" alt="Comercity Logo" class="logo-img">
+                    <h1 class="brand-name">COMERCITY</h1>
+                </a>
+            </div>
 
             <div class="search-wrapper">
                 <input type="text" placeholder="Buscar productos..." id="searchInput">
@@ -49,10 +50,11 @@
                     <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" />
                 </svg>
             </div>
+
         </div>
     </header>
-    <main class="main-content">
 
+    <main class="main-content">
         <section class="catalog-title-section">
             <h2 class="catalog-title">CATÁLOGO</h2>
         </section>
@@ -61,57 +63,67 @@
             <div class="book-catalog-container" id="bookCatalog">
 
                 <figure class="watermark-container" role="presentation">
-                    <img src="imagenes/fondo44.png" alt="fondo decorativo de Comercity" class="watermark-image-tag">
+                    <img src="imagenes/fondo44.png" alt="fondo decorativo" class="watermark-image-tag">
                 </figure>
 
                 <button class="nav-button prev-button" id="catalogPrev" aria-label="Página anterior">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"></path>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"></path></svg>
                 </button>
                 <button class="nav-button next-button" id="catalogNext" aria-label="Página siguiente">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
                 </button>
 
                 <div class="book-pages" id="catalogPages">
-
+                    
                     <article class="page-slide active" data-page-index="0">
                         <div class="supplier-grid">
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Super"
-                                    alt="Super Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=AmericanDy"
-                                    alt="AmericanDy Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Colgate"
-                                    alt="Colgate Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Elite"
-                                    alt="Elite Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Guantes"
-                                    alt="Guantes Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Nestlé"
-                                    alt="Nestlé Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Nutresa"
-                                    alt="Nutresa Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Fini"
-                                    alt="Fini Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=SUPER" alt="SUPER"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ALICORP" alt="ALICORP"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=AMERICANDY" alt="AMERICANDY"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=COLGATE" alt="COLGATE"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ELITE" alt="ELITE"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=GLOBAL+MERKET" alt="GLOBAL MERKET"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=GRECO" alt="GRECO"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=GUANTES" alt="GUANTES"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ITALO" alt="ITALO"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=MONDELEZ" alt="MONDELEZ"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=NESTLE" alt="NESTLE"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=NISSI" alt="NISSI"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=NUTRESA" alt="NUTRESA"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=PUERTO+MAR" alt="PUERTO MAR"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=SEUL" alt="SEUL"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=SOCA" alt="SOCA"></div>
                         </div>
                     </article>
 
                     <article class="page-slide" data-page-index="1">
                         <div class="supplier-grid">
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Proveedor+X"
-                                    alt="Proveedor Logo"></div>
-                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Proveedor+Y"
-                                    alt="Proveedor Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=SOFTYS" alt="SOFTYS"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=THE+KINGS" alt="THE KINGS BRANDS"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=TRUVA" alt="TRUVA"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ZYSTOLE" alt="ZYSTOLE"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ADRO" alt="ADRO"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ALDOR" alt="ALDOR"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=ATW" alt="ATW"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=CHEFRITO" alt="CHEFRITO"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=COLOMBINA" alt="COLOMBINA"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=CONFITECOL" alt="CONFITECOL"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=FINI" alt="FINI"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=GLORIA" alt="GLORIA"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=O%26D" alt="O&D"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=PIQUITOS" alt="PIQUITOS"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=YOLIS" alt="YOLIS"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=SAN+ANDRES" alt="SAN ANDRES"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/200x100/ffffff/1d1d1f?text=CANDYS+GROUP" alt="CANDYS GROUP"></div>
                         </div>
                     </article>
+
                 </div>
+
             </div>
         </section>
     </main>
 
     <script src="script.js"></script>
 </body>
-
 </html>

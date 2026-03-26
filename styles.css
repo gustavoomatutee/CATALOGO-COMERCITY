@@ -1,21 +1,38 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET
+   ========================================================================== */
 :root {
     --primary-color: #1d1d1f;
     --accent-blue: #0071e3;
     --bg-header: rgba(255, 255, 255, 0.8);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-white: #ffffff;
+    --bg-soft-gray: #fbfbfd;
+    --text-main: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+    --border-radius-large: 20px;
+    --border-radius: 12px;
 }
 
-* { margin: 0; 
+* { 
+    margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    font-family: 'Inter', -apple-system, sans-serif; }
+    font-family: 'Inter', -apple-system, sans-serif; 
+}
 
-/* Header con Efecto Blur */
+body { background-color: var(--bg-soft-gray); }
+
+/* ==========================================================================
+   2. HEADER PRINCIPAL
+   ========================================================================== */
 .main-header {
     position: fixed;
     top: 0; width: 100%; height: 60px;
     background: var(--bg-header);
-    backdrop-filter: blur(15px); /* Efecto Apple */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(0,0,0,0.1);
     z-index: 1000;
 }
@@ -25,313 +42,232 @@
     margin: 0 auto; height: 100%;
     display: flex; 
     align-items: center; 
-    /* justify-content: space-between; */
     padding: 0 20px;
 }
 
-/* Menu Hamburguesa */
-.menu-toggle {
-    background: none; 
-    border: none; 
-    cursor: pointer;
-    display: flex; 
-    flex-direction: column; 
-    gap: 5px;
-}
-.menu-toggle span {
-    width: 25px; 
-    height: 2px; 
-    background: var(--primary-color);
-    transition: var(--transition);
+/* Agrupación Menú y Logo a la izquierda */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-/* Logo */
+.menu-toggle {
+    background: none; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px; height: 2px; 
+    background: var(--primary-color);
+    transition: var(--transition-smooth);
+}
+
 .logo-container {
-    display: flex; 
-    align-items: center; 
-    text-decoration: none; 
-    color: inherit;
+    display: flex; align-items: center; 
+    text-decoration: none; color: inherit;
     transition: opacity 0.2s;
 }
-.logo-container:hover { opacity: 0.7; }
-.logo-img { 
-    height: 65px; 
-    margin-right: 10px;
-    width: auto;}
-.brand-name { 
-    font-size: 1.5rem; 
-    font-weight: 800; 
-    letter-spacing: 2px;
-    color: #28325C; }
 
-/* Barra de Búsqueda */
+.logo-container:hover { opacity: 0.7; }
+.logo-img { height: 65px; margin-right: 10px; width: auto; }
+.brand-name { font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; color: #28325C; }
+
 .search-wrapper { 
     position: relative; 
     display: flex; 
     align-items: center;
-    margin-left: auto;
- }
-#searchInput {
-    padding: 8px 35px 8px 15px; 
-    border-radius: 20px;
-    border: 1px solid #d2d2d7; 
-    background: #f5f5f7;
-    outline: none; 
-    transition: var(--transition); 
-    width: 180px;
+    margin-left: auto; /* Empuja el buscador a la derecha */
 }
-#searchInput:focus { 
-    width: 250px; 
-    border-color: var(--accent-blue); 
-    background: #fff; }
-.search-icon { 
-    position: absolute; 
-    right: 12px; 
-    color: #86868b; }
 
-/* Menú Lateral */
-.sidebar {
-    position: fixed; 
-    left: -300px; 
-    top: 0; 
-    width: 300px; 
-    height: 100vh;
-    background: #fff; 
-    z-index: 1001; 
-    transition: var(--transition);
-    padding: 80px 20px; 
-    box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+#searchInput {
+    padding: 8px 35px 8px 15px; border-radius: 20px;
+    border: 1px solid #d2d2d7; background: #f5f5f7;
+    outline: none; transition: var(--transition-smooth); width: 180px;
 }
+
+#searchInput:focus { width: 250px; border-color: var(--accent-blue); background: #fff; }
+.search-icon { position: absolute; right: 12px; color: #86868b; }
+
+/* ==========================================================================
+   3. MENÚ LATERAL (SIDEBAR PREMIUM)
+   ========================================================================== */
+.sidebar {
+    position: fixed; left: -320px; top: 0; 
+    width: 320px; height: 100vh;
+    background: var(--bg-white); 
+    z-index: 1001; 
+    transition: var(--transition-smooth);
+    padding: 100px 25px 40px; 
+    box-shadow: 10px 0 30px rgba(0,0,0,0.08);
+    overflow-y: auto;
+}
+
 .sidebar.active { left: 0; }
+
 .menu-overlay {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.3); 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(3px);
     opacity: 0; visibility: hidden;
-    transition: var(--transition); 
+    transition: var(--transition-smooth); 
     z-index: 999;
 }
-.menu-overlay.active { 
-    opacity: 1; 
-    visibility: visible; }
 
-/* Dropdown de Proveedores */
+.menu-overlay.active { opacity: 1; visibility: visible; }
+
+/* Enlaces del Menú */
+.nav-link, .dropdown-btn { 
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 15px 18px; margin-bottom: 8px;
+    background: transparent; border: none; border-radius: 10px; 
+    font-size: 1.1rem; font-weight: 600; color: var(--text-main);
+    text-decoration: none; cursor: pointer; 
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover, .dropdown-btn:hover {
+    background: var(--bg-soft-gray);
+    color: var(--accent-blue);
+}
+
+.dropdown-btn span { font-size: 1.4rem; font-weight: 300; transition: transform 0.3s ease; }
+
+/* Dropdown Submenú */
 .dropdown-content { 
-    display: none; 
-    list-style: none; 
-    padding-left: 20px; 
-    margin-top: 10px;
+    display: none; list-style: none; 
+    padding-left: 15px; margin: 5px 0 15px 15px;
+    border-left: 2px solid #eaeaea; 
 }
+
 .dropdown-content.show { display: block; }
-.dropdown-btn { 
-    background: none; 
-    border: none; 
-    font-size: 1.1rem; 
-    cursor: pointer; 
-    padding: 10px 0; 
-    width: 100%; 
-    text-align: left;
-}
-:root {
-    /* Variables Específicas del Módulo */
-    --book-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra suave 'Apple' */
-    --watermark-opacity: 0.03; /* Muy sutil */
-    --watermark-url: url('imagenes/fondo44.png'); /* Ruta de la marca de agua */
-    --font-family-title: 'Inter', sans-serif; /* Fuente para títulos */
+
+.dropdown-content li a {
+    display: block; padding: 10px 15px;
+    color: var(--text-secondary); text-decoration: none; 
+    font-size: 0.95rem; border-radius: 8px;
+    transition: var(--transition-smooth);
 }
 
-/* Ajuste del flujo principal para compensar el header fijo */
-.main-content {
-    padding-top: 80px; 
-    padding-bottom: 60px;
-    background-color: var(--bg-soft-gray, #fbfbfd);
+.dropdown-content li a:hover {
+    color: var(--text-main); background: var(--bg-soft-gray);
+    transform: translateX(6px);
 }
 
-/* Sección del Título */
-.catalog-title-section {
-    text-align: center;
-    margin-bottom: 25px;
+/* ==========================================================================
+   4. CATÁLOGO PRINCIPAL
+   ========================================================================== */
+.main-content { padding-top: 100px; padding-bottom: 60px; }
+.catalog-title-section { text-align: center; margin-bottom: 25px; }
+.catalog-title { 
+    font-size: 2.2rem; font-weight: 300; letter-spacing: 4px; 
+    color: var(--text-main); text-transform: uppercase; margin: 0; 
 }
 
-.catalog-title {
-    font-family: var(--font-family-title);
-    font-size: 2.2rem;
-    font-weight: 300; /* Minimalismo */
-    letter-spacing: 4px; /* Estilo Apple */
-    color: var(--text-main, #1d1d1f);
-    text-transform: uppercase;
-    margin: 0;
-}
-
-/* Contenedor Principal del Libro */
-.book-catalog-section {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
+.book-catalog-section { display: flex; justify-content: center; width: 100%; }
 
 .book-catalog-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px; /* Ancho máximo 'pixel-perfect' */
-    height: 1050px;
-    background: var(--bg-white, #ffffff);
-    border-radius: var(--border-radius-large, 20px);
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative; width: 100%; max-width: 1000px; height: 1300px;
+    background: var(--bg-white); border-radius: var(--border-radius-large);
+    overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.25), 0 20px 40px -20px rgba(0, 0, 0, 0.35);
     margin: 0 auto; 
 }
 
-/* Marca de Agua (Optimizada) */
 .watermark-container {
-    position: absolute; /* Esto evita que empuje a los logos hacia abajo */
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    z-index: 1; /* Lo manda al fondo */
-    pointer-events: none; /* Evita que el fondo bloquee los clics en los logos */
-    overflow: hidden;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    margin: 0; padding: 0; z-index: 1; pointer-events: none; overflow: hidden;
 }
-/* Imagen del fondo */
+
 .watermark-image-tag {
-    width: 100%;
-    height: 100%;
-    object-fit: fill; 
-    opacity: 1; /* Ajusta la opacidad para que sea sutil pero visible */
-    pointer-events: none; /* Asegura que no interfiera con la interacción */
+    width: 100%; height: 100%; object-fit: fill; opacity: 1; pointer-events: none; 
 }
-/* Botones de Navegación */
+
 .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    cursor: pointer;
-    padding: 15px;
-    z-index: 10;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: var(--transition-smooth, all 0.4s ease);
-    backdrop-filter: blur(5px); /* Efecto cristal Apple */
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7); border: none; cursor: pointer;
+    padding: 15px; z-index: 10; border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); transition: var(--transition-smooth);
+    backdrop-filter: blur(5px); 
 }
 
-.nav-button:hover {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
+.nav-button:hover { background: rgba(255, 255, 255, 0.9); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
 .prev-button { left: 20px; }
 .next-button { right: 20px; }
+.nav-button svg { width: 30px; height: 30px; fill: var(--text-secondary); transition: var(--transition-fast); }
+.nav-button:hover svg { fill: var(--primary-color); }
 
-.nav-button svg {
-    width: 30px; 
-    height: 30px;
-    fill: var(--text-secondary, #86868b); /* Color sutil */
-    transition: fill var(--transition-fast, all 0.2s ease);
-}
-
-.nav-button:hover svg {
-    fill: var(--primary-color, #1d1d1f);
-}
-
-/* Las 'Páginas' (diapositivas) */
 .book-pages {
-    display: flex;
-    width: 100%;
-    height: auto;
-    position: relative;
-    overflow: hidden;
-    z-index: 2;
+    display: flex; width: 100%; height: 100%;
+    position: relative; overflow: hidden; z-index: 2;
 }
 
 .page-slide {
-    min-width: 100%;
-    height: 100%;
+    min-width: 100%; height: 100%;
     transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute; /* Para superposición */
-    top: 0; 
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    opacity: 0; visibility: hidden; position: absolute; top: 0; left: 0;
+    display: flex; align-items: center; justify-content: center;
 }
 
-.page-slide.active {
-    opacity: 1;
-    visibility: visible;
-    position: relative; /* Vuelve al flujo principal */
-    transform: translateX(0%);
-}
-
-/* Efectos de transición: izquierda a derecha */
+.page-slide.active { opacity: 1; visibility: visible; position: relative; transform: translateX(0%); }
 .page-slide.slide-right { transform: translateX(-100%); }
 .page-slide.slide-left { transform: translateX(100%); }
 
-/* Grid de Proveedores (Logos) */
 .supplier-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 por fila en escritorio */
-    grid-gap: 25px;
-    padding: 60px; /* Padding generoso 'Apple' */
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 65px; 
+    padding: 60px; 
+    width: 100%;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 768px) {
-    .supplier-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 por fila en móvil */
-        padding: 40px;
-    }
-}
+@media (max-width: 768px) { .supplier-grid { grid-template-columns: repeat(3, 1fr); padding: 40px; } }
+@media (max-width: 480px) { .supplier-grid { grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px; } }
 
-@media (max-width: 480px) {
-    .supplier-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 por fila en móvil pequeño */
-        grid-gap: 15px;
-        padding: 20px;
-    }
-}
-
-/* Item de Proveedor */
 .supplier-item {
-    display: flex;
-    justify-content: center;
+    display: flex; 
+    justify-content: center; 
     align-items: center;
-    background: var(--bg-white, #ffffff);
-    border-radius: var(--border-radius, 12px); /* 12px o similar */
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: var(--border-radius); 
     overflow: hidden;
-    transition: var(--transition-smooth, all 0.4s ease);
+    transition: var(--transition-smooth); 
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); /* Sombra muy sutil */
-    z-index: 2; /* Asegura que el logo esté sobre la marca de agua */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); 
+    z-index: 2; 
+    height: 160px;
+    width: 100%;
 }
 
-/* Micro-interacción: Hover suave */
-.supplier-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08); /* Sombra interactiva suave */
+.supplier-item {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: var(--border-radius); 
+    overflow: hidden;
+    transition: var(--transition-smooth); 
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); 
+    z-index: 2;
+    height: 200px; /* largo de donde va los logos */
+    width: 120%;   /* ancho de cuadro */
 }
-
-.supplier-item img {
-    max-width: 100%;
-    max-height: 80px; /* Limitador de altura */
-    height: auto;
-    width: auto;
-    filter: grayscale(100%); /* Efecto visual moderno */
-    opacity: 0.7;
-    transition: var(--transition-smooth, all 0.4s ease);
-}
-
-.supplier-item:hover img {
-    filter: grayscale(0%);
-    opacity: 1;
-}
+.supplier-item:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08); 
+    background: rgba(255,255,255,0.9); }
+.supplier-item img { 
+    max-width: 100%; 
+    max-height: 100px; 
+    height: auto; 
+    width: auto; 
+    object-fit: contain;
+    filter: grayscale(100%); 
+    opacity: 0.7; 
+    transition: var(--transition-smooth); }
+.supplier-item:hover img { filter: grayscale(0%); opacity: 1; }
