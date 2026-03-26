@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comercity - Catálogo Digital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <a href="#contacto" class="nav-link">Contacto</a>
+            <div class="dropdown">
+                <button class="dropdown-btn" id="btnProveedores">
+                    Proveedores <span>+</span>
+                </button>
+                <ul class="dropdown-content" id="proveedoresList">
+                    <li><a href="#">Nestlé</a></li>
+                    <li><a href="#">Colgate</a></li>
+                    <li><a href="#">Nutresa</a></li>
+                    <li><a href="#">Fini</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <header class="main-header">
+        <div class="header-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="logo-container">
+                <img src="imagenes/logo111.png" alt="Comercity Logo" class="logo-img">
+                <h1 class="brand-name">COMERCITY</h1>
+            </a>
+
+            <div class="search-wrapper">
+                <input type="text" placeholder="Buscar productos..." id="searchInput">
+                <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+
+        <section class="catalog-title-section">
+            <h2 class="catalog-title">CATÁLOGO</h2>
+        </section>
+
+        <section class="book-catalog-section">
+            <div class="book-catalog-container" id="bookCatalog">
+
+                <figure class="watermark-container" role="presentation">
+                    <img src="imagenes/fondo44.png" alt="fondo decorativo de Comercity" class="watermark-image-tag">
+                </figure>
+
+                <button class="nav-button prev-button" id="catalogPrev" aria-label="Página anterior">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"></path>
+                    </svg>
+                </button>
+                <button class="nav-button next-button" id="catalogNext" aria-label="Página siguiente">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+                    </svg>
+                </button>
+
+                <div class="book-pages" id="catalogPages">
+
+                    <article class="page-slide active" data-page-index="0">
+                        <div class="supplier-grid">
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Super"
+                                    alt="Super Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=AmericanDy"
+                                    alt="AmericanDy Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Colgate"
+                                    alt="Colgate Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Elite"
+                                    alt="Elite Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Guantes"
+                                    alt="Guantes Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Nestlé"
+                                    alt="Nestlé Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Nutresa"
+                                    alt="Nutresa Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Fini"
+                                    alt="Fini Logo"></div>
+                        </div>
+                    </article>
+
+                    <article class="page-slide" data-page-index="1">
+                        <div class="supplier-grid">
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Proveedor+X"
+                                    alt="Proveedor Logo"></div>
+                            <div class="supplier-item"><img src="https://via.placeholder.com/150?text=Proveedor+Y"
+                                    alt="Proveedor Logo"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
