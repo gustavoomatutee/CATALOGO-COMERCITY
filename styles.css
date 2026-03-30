@@ -87,6 +87,13 @@ body { background-color: var(--bg-soft-gray); }
 }
 
 #searchInput:focus { width: 250px; border-color: var(--accent-blue); background: #fff; }
+
+@media (max-width: 480px) {
+    #searchInput { width: 120px; font-size: 0.85rem; }
+    #searchInput:focus { width: 150px; }
+    .brand-name { font-size: 1.1rem; }
+    .logo-img { height: 45px; }
+}
 .search-icon { position: absolute; right: 12px; color: #86868b; }
 
 /* ==========================================================================
@@ -167,11 +174,27 @@ body { background-color: var(--bg-soft-gray); }
 .book-catalog-section { display: flex; justify-content: center; width: 100%; }
 
 .book-catalog-container {
-    position: relative; width: 100%; max-width: 1000px; height: 1300px;
-    background: var(--bg-white); border-radius: var(--border-radius-large);
-    overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative; 
+    width: 100%; 
+    max-width: 1000px; 
+    height: 1300px;
+    background: var(--bg-white); 
+    border-radius: var(--border-radius-large);
+    overflow: hidden; 
+    border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.25), 0 20px 40px -20px rgba(0, 0, 0, 0.35);
     margin: 0 auto; 
+    transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+    .book-catalog-container {
+        height: auto;
+        min-height: 600px;
+        max-height: 155vh;
+        margin: 0 25px; /* Más espacio respecto a los bordes de la pantalla */
+        border-radius: 15px;
+    }
 }
 
 .watermark-container {
@@ -181,6 +204,12 @@ body { background-color: var(--bg-soft-gray); }
 
 .watermark-image-tag {
     width: 100%; height: 100%; object-fit: fill; opacity: 1; pointer-events: none; 
+}
+
+@media (max-width: 768px) {
+    .watermark-image-tag {
+        object-fit: fill;
+    }
 }
 
 .nav-button {
@@ -221,24 +250,20 @@ body { background-color: var(--bg-soft-gray); }
     width: 100%;
 }
 
-@media (max-width: 768px) { .supplier-grid { grid-template-columns: repeat(3, 1fr); padding: 40px; } }
-@media (max-width: 480px) { .supplier-grid { grid-template-columns: repeat(2, 1fr); grid-gap: 20px; padding: 20px; } }
+@media (max-width: 768px) { 
+    .supplier-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        padding: 20px; 
+        grid-gap: 30px;
+    } 
+}
 
-.supplier-item {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    background: rgba(255, 255, 255, 0.6); 
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: var(--border-radius); 
-    overflow: hidden;
-    transition: var(--transition-smooth); 
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); 
-    z-index: 2; 
-    height: 160px;
-    width: 100%;
+@media (max-width: 480px) { 
+    .supplier-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        grid-gap: 15px; 
+        padding: 15px; 
+    } 
 }
 
 .supplier-item {
@@ -249,25 +274,43 @@ body { background-color: var(--bg-soft-gray); }
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: var(--border-radius); 
-    overflow: hidden;
     transition: var(--transition-smooth); 
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02); 
     z-index: 2;
-    height: 200px; /* largo de donde va los logos */
-    width: 120%;   /* ancho de cuadro */
+    height: 200px;
+    width: 120%; /* Mantiene el tamaño que el usuario tiene para PC */
 }
+
+@media (max-width: 768px) {
+    .supplier-item {
+        width: 90%; 
+        height: 100px; /* Un poco más pequeño para que quepa mejor */
+        padding: 8px;
+    }
+}
+
 .supplier-item:hover { 
     transform: translateY(-5px); 
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08); 
     background: rgba(255,255,255,0.9); }
+
 .supplier-item img { 
-    max-width: 100%; 
-    max-height: 100px; 
-    height: auto; 
-    width: auto; 
+    max-width: 200%; 
+    max-height: 250px; 
+    height: 90%; 
+    width: 90%; 
     object-fit: contain;
-    filter: grayscale(100%); 
-    opacity: 0.7; 
+    filter: grayscale(0%); 
+    opacity: 1; 
     transition: var(--transition-smooth); }
+
+@media (max-width: 768px) {
+    .supplier-item img {
+        max-height: 200px;
+        /* width: 90%; */
+        /* height: 90%; */
+    }
+}
+
 .supplier-item:hover img { filter: grayscale(0%); opacity: 1; }
