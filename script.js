@@ -50,12 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Función central para manejar la transición de páginas
         const updatePage = (direction) => {
-            if (totalPages === 0) return; // Seguridad si no hay páginas
+            if (totalPages === 0) return;
 
             const currentPage = pages[currentPageIndex];
             let nextPageIndex;
 
-            // Lógica de cálculo circular (si llega al final, vuelve al inicio)
             if (direction === 'next') {
                 nextPageIndex = (currentPageIndex + 1) % totalPages;
             } else {
@@ -64,22 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nextPage = pages[nextPageIndex];
 
-            // Aplicación de clases CSS para la animación
+            // Removemos active de todas las páginas primero
+            pages.forEach(page => {
+                page.classList.remove('active', 'prev');
+            });
+
+            // Añadimos la clase prev a la página actual según dirección
             if (direction === 'next') {
-                currentPage.classList.add('slide-right');
-                nextPage.classList.add('active');
-                nextPage.classList.remove('slide-left');
-            } else {
-                currentPage.classList.add('slide-left');
-                nextPage.classList.add('active');
-                nextPage.classList.remove('slide-right');
+                currentPage.classList.add('prev');
             }
 
-            // Limpieza de clases tras la transición (600ms coincide con tu CSS)
-            setTimeout(() => {
-                currentPage.classList.remove('active', 'slide-right', 'slide-left');
-                currentPageIndex = nextPageIndex;
-            }, 600); 
+            // Activamos la siguiente página
+            nextPage.classList.add('active');
+
+            // Actualizamos el índice
+            currentPageIndex = nextPageIndex;
         };
 
         // Eventos de los botones de navegación del catálogo
@@ -99,10 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // 2. Navegar por el catálogo con flechas izquierda/derecha
-            if (e.key === 'ArrowRight') { 
-                updatePage('next'); 
-            } else if (e.key === 'ArrowLeft') { 
-                updatePage('prev'); 
+            if (e.key === 'ArrowRight') {
+                updatePage('next');
+            } else if (e.key === 'ArrowLeft') {
+                updatePage('prev');
             }
         });
     }
